@@ -22,7 +22,7 @@
 				<div id="menu">
 					<ul>
 						<li class="current_page_item"><a href="#">Home</a></li>
-						<li><a href="scriptlist.html">Scripts</a></li>
+						<li><a href="scriptlist">Scripts</a></li>
 						<li><a href="secret.html">Secrets</a></li>
 					</ul>
 				</div>
