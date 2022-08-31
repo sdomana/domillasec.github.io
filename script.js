@@ -21,9 +21,9 @@ var intervalId = window.setInterval(function () {
     loaded += 1
   }
   save()
-  balance += EPS
+  balance += EPS/100
   updateM();
-}, 1000);
+}, 10);
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -104,28 +104,19 @@ function buyGPU() {
   if (EPS == 0) {
     EPS += 10
   }
-  EPS += (EPS - Math.floor(Math.random() * EPS/2))
+  EPS += (EPS - Math.floor(Math.random() * EPS / 2))
   GPUs += 1
   updateM()
-  alert('good', 'You bought 1 GPU, doubling your $$/s!')
+  alert('good', 'You bought 1 GPU, increasing your M/s!')
 }
 
 function alert(x, y) {
   if (x == 'bad') {
-    document.body.innerHTML += `<div class="alt ralert visible">
-    <span class="closebtn" onclick="this.parentElement.classList.remove('visible'); this.parentElement.classList.add('hidden')">&times;</span>
-    ${y}
-  </div>`
+    document.body.innerHTML += `<div class="alt ralert visible">${y}</div>`
   } else if (x == 'info') {
-    document.body.innerHTML += `<div class="alt ialert visible">
-  <span class="closebtn" onclick="this.parentElement.classList.remove('visible'); this.parentElement.classList.add('hidden')">&times;</span>
-  ${y}
-</div>`
+    document.body.innerHTML += `<div class="alt ialert visible">${y}</div>`
   } else if (x == 'good') {
-    document.body.innerHTML += `<div class="alt galert visible">
-  <span class="closebtn" onclick="this.parentElement.classList.remove('visible'); this.parentElement.classList.add('hidden')">&times;</span>
-  ${y}
-</div>`
+    document.body.innerHTML += `<div class="alt galert visible">${y}</div>`
   }
 
   setTimeout(() => {
