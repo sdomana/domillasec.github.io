@@ -112,6 +112,11 @@ function updateM() {
     document.getElementsByClassName('flat')[2].style.borderColor = '#00ff00'
   }
 
+  if (balance > 1000000) {
+    document.getElementById('mHead').classList.add('rainbow')
+    document.getElementById('mHead').classList.add('rainbow_text_animated')
+  }
+
   save()
 }
 
