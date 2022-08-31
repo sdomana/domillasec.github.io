@@ -100,7 +100,7 @@ function buyGPU() {
   if (balance < GPUPrice) { alert('bad', 'You don\'t have enough money!'); return; }
 
   balance -= GPUPrice
-  GPUPrice += (GPUPrice * 2)
+  GPUPrice += Math.round((GPUPrice * 1.5))
   if (EPS == 0) {
     EPS += 10
   }
