@@ -22,6 +22,53 @@ body {
   position: fixed;
 }
 
+.scroller {
+  overflow-y: auto;
+  scrollbar-color: rgb(44, 44, 44) black;
+  scrollbar-width: thin;
+}
+
+.seperator {
+  margin: auto;
+  width: 90%;
+  height: 1px;
+  background-color: white;
+}
+
+
+.Achievement {
+  margin: auto;
+  width: 90%;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+.achievements {
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  width: 50%;
+  height: 80%;
+  background-color: rgb(20, 20, 20);
+  position: absolute;
+  border-style: double;
+  border-color:rgb(180, 180, 180);
+}
+
+.invis {
+  display: none;
+}
+
+.vis {
+  display: block;
+}
+
+#achBtn {
+  top: 92%;
+}
+
 .galert {
   top: 90%;
   padding: 20px;
@@ -34,8 +81,8 @@ body {
 .ialert {
   top: 90%;
   padding: 20px;
-  background-color: #f1f436; /* Red */
-  color: white;
+  background-color: #fbff00; /* Red */
+  color: rgb(0, 0, 0);
   margin-bottom: 15px;
   position: fixed;
 }
