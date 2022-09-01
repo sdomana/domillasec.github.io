@@ -163,7 +163,7 @@ function updateM() {
       alert('info', 'You earned an achievement: Millionaire!')
       save()
     }
-    document.getElementById('thouAch').innerText = "🔓 Millionaire - Reach $1,000,000."
+    document.getElementById('millAch').innerText = "🔓 Millionaire - Reach $1,000,000."
   }
 
   if (balance >= 1000000000) {
@@ -174,7 +174,7 @@ function updateM() {
       alert('info', 'You earned an achievement: Billionaire!')
       save()
     }
-    document.getElementById('thouAch').innerText = "🔓 Billionaire - Reach $1,000,000,000."
+    document.getElementById('billAch').innerText = "🔓 Billionaire - Reach $1,000,000,000."
 
   }
   
@@ -186,7 +186,7 @@ function updateM() {
       alert('info', 'You earned an achievement: Trillionaire!')
       save()
     }
-    document.getElementById('thouAch').innerText = "🔓 Trillionaire - Reach $1,000,000,000,000."
+    document.getElementById('trillAch').innerText = "🔓 Trillionaire - Reach $1,000,000,000,000."
 
   }
 
@@ -198,7 +198,7 @@ function updateM() {
       alert('info', 'You earned an achievement: GPU Collector!')
       save()
     }
-    document.getElementById('thouAch').innerText = "🔓 GPU Collector - Buy a total of 10 GPUs."
+    document.getElementById('GPU Collector').innerText = "🔓 GPU Collector - Buy a total of 10 GPUs."
 
   }
 
@@ -210,7 +210,7 @@ function updateM() {
       alert('info', 'You earned an achievement: Autoclicker!')
       save()
     }
-    document.getElementById('thouAch').innerText = "🔓 Autoclicker - Click 'Mine' 10,000 times."
+    document.getElementById('Autoclicker').innerText = "🔓 Autoclicker - Click 'Mine' 10,000 times."
 
   }
 
