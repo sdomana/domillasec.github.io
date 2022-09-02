@@ -1,14 +1,22 @@
 var balance = 0;
+
 var GPUs = 0;
 var GPUPrice = 100;
+var trayPrice = 100000000;
+var trays = 1;
+var maxGPUs = 10;
+
 var EPS = 0;
+
 var loaded = 0;
 var GPUBTN = document.getElementsByClassName('shopflat')[0]
 var EPCBTN = document.getElementsByClassName('shopflat')[1]
 var v1 = 0
+
 var clickPrice = 10000;
 var EPC = 1;
 var clicks = 0;
+
 var showAch = 0;
 var hasReset = 0;
 var goldmines = 0;
@@ -51,7 +59,10 @@ function getCookie(name) {
 }
 
 function save() {
-  document.cookie = `Balance=${balance};`
+  document.cookie = `maxGPUs=${maxGPUs}`
+  document.cookie = `trayPrice=${trayPrice}`
+  document.cookie = `trays=${trays}`
+  document.cookie = `Balance=${balance}`
   document.cookie = `GPUs=${GPUs};`
   document.cookie = `EPS=${EPS};`
   document.cookie = `GPUPrice=${GPUPrice}`
@@ -75,6 +86,9 @@ function load() {
     balance = parseInt(getCookie('Balance'))
     GPUs = parseInt(getCookie('GPUs'))
     EPS = parseInt(getCookie('EPS'))
+    trays = parseInt(getCookie('trays'))
+    trayPrice = parseInt(getCookie('trayPrice'))
+    maxGPUs = parseInt(getCookie('maxGPUs'))
     GPUPrice = parseInt(getCookie('GPUPrice'))
     EPC = parseInt(getCookie('EPC'))
     clickPrice = parseInt(getCookie('clickPrice'))
@@ -115,6 +129,9 @@ function verifyReset() {
     EPC = 1;
     unlocked = [];
     hasReset = 1;
+    maxGPUs = 10;
+    trays = 1;
+    trayPrice = 100000000;
     locked = ["Thousandaire", "Millionaire", "Billionaire", "Trillionaire", "GPU Collector", "EPC Collector", "Autoclicker", "Goldmine", "AFK Pro"];
     save()
     location.reload();
@@ -156,13 +173,22 @@ function updateM() {
   document.getElementById('sHeadI').innerText = "M/s: $" + nWC(Math.round(EPS));
   document.getElementById('sHeadII').innerText = "M/c: $" + nWC(Math.round(EPC));
   document.getElementsByClassName('flat')[0].innerText = `Mine\n+$${nWC(EPC)}`
-  document.getElementsByClassName('shopflat')[0].innerText = `Buy GPU (${GPUs})\n-$${nWC(GPUPrice)}`
+  document.getElementsByClassName('shopflat')[0].innerText = `Buy GPU (${GPUs}/${maxGPUs})\n-$${nWC(GPUPrice)}`
   document.getElementsByClassName('shopflat')[1].innerText = `Buy EPC (${EPC})\n-$${nWC(clickPrice)}`
-  if (balance < GPUPrice) {
+  document.getElementsByClassName('shopflat')[2].innerText = `Buy Tray (${trays})\n-$${nWC(trayPrice)}`
+
+  if (balance < GPUPrice && GPUs < maxGPUs) {
     document.getElementsByClassName('shopflat')[0].style.borderColor = '#808080'
   } else {
     document.getElementsByClassName('shopflat')[0].style.borderColor = '#00ff00'
   }
+
+  if (balance < trayPrice) {
+    document.getElementsByClassName('shopflat')[2].style.borderColor = '#808080'
+  } else {
+    document.getElementsByClassName('shopflat')[2].style.borderColor = '#00ff00'
+  }
+
   if (balance < clickPrice) {
     document.getElementsByClassName('shopflat')[1].style.borderColor = '#808080'
   } else {
@@ -306,14 +332,6 @@ function addBal() {
   clicks += 1;
   balance += EPC
   updateM()
-  if (balance >= 100) {
-    GPUBTN.classList.remove('hidden')
-    GPUBTN.classList.add('visible')
-  }
-  if (balance >= 100000) {
-    EPCBTN.classList.remove('hidden')
-    EPCBTN.classList.add('visible')
-  }
 }
 
 
@@ -340,11 +358,23 @@ function buyClick() {
   }
   EPC += (EPC - Math.floor(Math.random() * EPC / 1.25))
   updateM()
-  alert('good', 'You bought 1 EPC, increasing your $ per click!')
+  alert('good', 'You bought 1 EPC, increasing your M/c!')
+}
+
+function buyTray() {
+  if (balance < trayPrice) { alert('bad', 'You don\'t have enough money!'); return; }
+
+  balance -= trayPrice;
+  trays += 1;
+  trayPrice += trayPrice;
+  maxGPUs += 10;
+  updateM()
+  alert('good', 'You bought 1 Tray, increasing your max GPUs by 10!')
 }
 
 function buyGPU() {
   if (balance < GPUPrice) { alert('bad', 'You don\'t have enough money!'); return; }
+  if (GPUs === maxGPUs) { alert('bad', 'You don\'t have enough space! Buy some GPU trays.'); return; }
 
   balance -= GPUPrice
   GPUPrice += Math.round((GPUPrice * 1.5))
