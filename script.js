@@ -3,35 +3,39 @@ var GPUs = 0;
 var GPUPrice = 100;
 var EPS = 0;
 var loaded = 0;
-var GPUBTN = document.getElementsByClassName('flat')[1]
-var EPCBTN = document.getElementsByClassName('flat')[2]
+var GPUBTN = document.getElementsByClassName('shopflat')[0]
+var EPCBTN = document.getElementsByClassName('shopflat')[1]
 var v1 = 0
 var clickPrice = 10000;
 var EPC = 1;
 var clicks = 0;
 var showAch = 0;
 var hasReset = 0;
+var goldmines = 0;
 
-var locked = ["Thousandaire", "Millionaire", "Billionaire", "Trillionaire", "GPU Collector", "Autoclicker"]
+var locked = ["Thousandaire", "Millionaire", "Billionaire", "Trillionaire", "GPU Collector", "Autoclicker", "Gold Mine", "New Man"]
 
 var unlocked = []
+
+function intToString(value) {
+  var suffixes = ["", "k", "m", "b","t","qd"];
+  var suffixNum = Math.floor((""+value).length/3);
+  var shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000,suffixNum)) : value).toPrecision(2));
+  if (shortValue % 1 !== 0) {
+    shortValue = shortValue.toFixed(1);
+  }
+  return shortValue+suffixes[suffixNum];
+}
 
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-
-function toFixed(num, fixed) {
-  var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
-  return num.toString().match(re)[0];
-}
-
 function nWC(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 var intervalId = window.setInterval(function () {
-  if (loaded == 0) {
+  if (loaded === 0) {
     load()
     loaded += 1
   }
@@ -65,9 +69,8 @@ function load() {
     unlocked = JSON.parse(getCookie('achievements'))
     locked = JSON.parse(getCookie('lach'))
     console.log(getCookie('achievements'))
-    document.getElementsByClassName('flat')[0].style.borderColor = '#00ff00'
+    document.getElementsByClassName('flat')[0].style.borderColor = '#808080'
     document.getElementsByClassName('flat')[0].innerText = "Mine"
-    document.getElementsByClassName('flat')[1].innerText = `${nWC(GPUPrice)} - Buy GPU`
     console.log('Progress Loaded')
     balance = parseInt(getCookie('Balance'))
     GPUs = parseInt(getCookie('GPUs'))
@@ -78,6 +81,7 @@ function load() {
     clicks = parseInt(getCookie('clicks'))
     goldmines = parseInt(getCookie('goldmines'))
     hasReset = parseInt(getCookie('hasReset'))
+    document.getElementById('topbarBal').innerText = "$" + balance
     updateM()
     if (balance >= 100 || GPUs >= 1) {
       GPUBTN.classList.remove('hidden')
@@ -92,11 +96,8 @@ function load() {
   }
 }
 
-document.addEventListener('load', (e) => {
-})
-
 function verifyReset() {
-  if (v1 == 0) {
+  if (v1 === 0) {
     let btn = document.getElementById('rsetBtn')
     btn.innerText = "You sure?"
     btn.style.color = "#ff0000"
@@ -120,23 +121,52 @@ function verifyReset() {
   }
 }
 
+function showHome() {
+  document.getElementsByClassName('header')[0].classList.add('vis')
+  document.getElementsByClassName('header')[0].classList.remove('invis')
+  document.getElementsByClassName('clickers')[0].classList.add('vis')
+  document.getElementsByClassName('clickers')[0].classList.remove('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.add('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('vis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('vflex')
+}
+
+function showShop() {
+  document.getElementsByClassName('header')[0].classList.remove('vis')
+  document.getElementsByClassName('header')[0].classList.add('invis')
+  document.getElementsByClassName('clickers')[0].classList.remove('vis')
+  document.getElementsByClassName('clickers')[0].classList.add('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.add('vis')
+  document.getElementsByClassName('shopBtns')[0].classList.add('vflex')
+}
+
+function showSettings() {
+  document.getElementsByClassName('header')[0].classList.remove('vis')
+  document.getElementsByClassName('header')[0].classList.add('invis')
+  document.getElementsByClassName('clickers')[0].classList.remove('vis')
+  document.getElementsByClassName('clickers')[0].classList.add('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('vflex')
+}
+
 function updateM() {
+  document.getElementById('topbarBal').innerText = "$" + nWC(Math.round(parseInt(balance)))
   document.getElementById('mHead').innerText = "Money: $" + nWC(Math.round(balance));
   document.getElementById('sHead').innerText = "GPUs: " + GPUs;
   document.getElementById('sHeadI').innerText = "M/s: $" + nWC(Math.round(EPS));
   document.getElementById('sHeadII').innerText = "M/c: $" + nWC(Math.round(EPC));
   document.getElementsByClassName('flat')[0].innerText = `Mine\n+$${nWC(EPC)}`
-  document.getElementsByClassName('flat')[1].innerText = `Buy GPU\n-$${nWC(GPUPrice)}`
-  document.getElementsByClassName('flat')[2].innerText = `Buy EPC\n-$${nWC(clickPrice)}`
+  document.getElementsByClassName('shopflat')[0].innerText = `Buy GPU (${GPUs})\n-$${nWC(GPUPrice)}`
+  document.getElementsByClassName('shopflat')[1].innerText = `Buy EPC (${EPC})\n-$${nWC(clickPrice)}`
   if (balance < GPUPrice) {
-    document.getElementsByClassName('flat')[1].style.borderColor = '#ff0000'
+    document.getElementsByClassName('shopflat')[0].style.borderColor = '#808080'
   } else {
-    document.getElementsByClassName('flat')[1].style.borderColor = '#00ff00'
+    document.getElementsByClassName('shopflat')[0].style.borderColor = '#00ff00'
   }
   if (balance < clickPrice) {
-    document.getElementsByClassName('flat')[2].style.borderColor = '#ff0000'
+    document.getElementsByClassName('shopflat')[1].style.borderColor = '#808080'
   } else {
-    document.getElementsByClassName('flat')[2].style.borderColor = '#00ff00'
+    document.getElementsByClassName('shopflat')[1].style.borderColor = '#00ff00'
   }
 
   if (balance > 1000000) {
@@ -238,7 +268,7 @@ function updateM() {
 
   }
 
-  if (hasReset >= 1) {
+  if (hasReset >= 1 || unlocked.includes('New Man')) {
     if (locked.includes('New Man')) {
       let tar = locked.indexOf('New Man')
       locked.splice(tar, 1)
@@ -250,12 +280,23 @@ function updateM() {
 
   }
 
+  if (goldmines >= 1) {
+    if (locked.includes('Gold Mine')) {
+      let tar = locked.indexOf('Gold Mine')
+      locked.splice(tar, 1)
+      unlocked.push('Gold Mine')
+      alert('info', 'You earned an achievement: Gold Mine!')
+      save()
+    }
+    document.getElementById('goldAch').innerText = "🔓 Gold Mine - Hit a gold mine! (0.1% chance.)"
+  }
+
   save()
 }
 
 function addBal() {
-  let chance = randInt(0, 10000)
-  if (chance >= 9990) {
+  let chance = randInt(0, 100000)
+  if (chance >= 99999) {
     console.log('AAAA GOLDMINE - ' + chance)
     goldmines += 1;
     balance += randInt(1, balance*3)
@@ -277,7 +318,7 @@ function addBal() {
 
 
 function showAchs() {
-  if (showAch == 0) {
+  if (showAch === 0) {
     document.getElementById('achDiv').classList.remove('invis')
     document.getElementById('achDiv').classList.add('vis')
     showAch = 1
@@ -294,7 +335,7 @@ function buyClick() {
 
   balance -= clickPrice
   clickPrice += Math.round((clickPrice * 2))
-  if (EPC == 1) {
+  if (EPC === 1) {
     EPC += 500
   }
   EPC += (EPC - Math.floor(Math.random() * EPC / 1.25))
@@ -307,7 +348,7 @@ function buyGPU() {
 
   balance -= GPUPrice
   GPUPrice += Math.round((GPUPrice * 1.5))
-  if (EPS == 0) {
+  if (EPS === 0) {
     EPS += 10
   }
   EPS += (EPS - Math.floor(Math.random() * EPS / 2))
@@ -317,11 +358,11 @@ function buyGPU() {
 }
 
 function alert(x, y) {
-  if (x == 'bad') {
+  if (x === 'bad') {
     document.body.innerHTML += `<div class="alt ralert visible">${y}</div>`
-  } else if (x == 'info') {
+  } else if (x === 'info') {
     document.body.innerHTML += `<div class="alt ialert visible">${y}</div>`
-  } else if (x == 'good') {
+  } else if (x === 'good') {
     document.body.innerHTML += `<div class="alt galert visible">${y}</div>`
   }
 
