@@ -6,6 +6,18 @@ body {
   justify-content: center;
 }
 
+.blastingBeans {
+  text-align: center;
+}
+
+.g-recaptcha {
+  position: absolute;
+  padding-top: 23px;
+  margin: auto;
+  width: auto;
+  display: inline-block;
+}
+
 .hidden {
   visibility: hidden;
   opacity: 0;
@@ -133,7 +145,7 @@ body {
 /* When moving the mouse over the close button */
 .closebtn:hover {
   color: black;
-} 
+}
 
 .sHead {
   font-size: 17px;
@@ -197,14 +209,10 @@ body {
 .flat {
   position: relative;
   display:block;
-
-  border: 1;
-  border-color:rgb(255, 255, 255);
-  border-radius: 0;
+    border-radius: 0;
   background: none;
-  border-style: double;
-  color: white;
-  -webkit-appearance: none;
+    border: 1 double rgb(255, 255, 255);
+    color: white;
   font-family: monospace;
   width: 300px;
   height: 90px;
@@ -219,6 +227,47 @@ body {
   font-family: monospace;
   font-size: 40px;
 }
+
+.bbMoney {
+  height: 50px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.bbPercent {
+  height: 50px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.bbOutcome {
+  height: 50px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.bbHead {
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+  padding-top: 40px;
+  font-family: monospace;
+  font-size: 40px;
+  text-align: center;
+}
+
+.slider {
+  width: 100%;
+}
+
 
 .shopBtns {
   text-align: center;
@@ -252,13 +301,10 @@ body {
   justify-content: center;
   flex-direction: row;
   align-self: flex-end;
-  border: 1;
-  border-color:rgb(255, 255, 255);
   border-radius: 0;
   background: none;
-  border-style: double;
+  border: 1 double rgb(255, 255, 255);
   color: white;
-  -webkit-appearance: none;
   font-family: monospace;
   width: 300px;
   height: 90px;
@@ -278,14 +324,10 @@ body {
   left: 87%;
   position: absolute;
   display:block;
-
-  border: 1;
-  border-color:rgb(255, 255, 255);
   border-radius: 0;
   background: none;
-  border-style: double;
+  border: 1 double rgb(255, 255, 255);
   color: white;
-  -webkit-appearance: none;
   font-family: monospace;
   width: 12%;
   height: 3%;

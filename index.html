@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width">
   <title>sdoma Idle</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
 
   <div class="topbar" style="display: table; overflow:hidden">
-    <span onclick="showHome()" style="display: table-cell; vertical-align: middle; horiz-align: center" class="hover-underline-animation">Home</span>
+    <span onclick="showHome()" style="display: table-cell; vertical-align: middle;" class="hover-underline-animation">Home</span>
     <span onclick="showShop()" style="display: table-cell; vertical-align: middle; justify-content: center" class="hover-underline-animation">Shop</span>
-    <span onclick="showSettings()" style="display: none; vertical-align: middle; horiz-align: center" class="hover-underline-animation">Extra</span>
+    <span onclick="showGamble()" style="display: table-cell; vertical-align: middle;" class="hover-underline-animation">Captcha</span>
+    <span onclick="showSettings()" style="display: none; vertical-align: middle;" class="hover-underline-animation">Extra</span>
     <a id="topbarBal" style="display: table-cell; vertical-align: middle;">XXXX</a>
   </div>
 
@@ -26,6 +29,8 @@
     <h1 id="sHeadII" class="sHead">XXXXX XX</h1>
   </div>
 
+  
+
   <div class="shopBtns invis">
     <h1 id="shopHead" class="shopHead">Shop</h1>
     <button onclick="buyGPU()" class="shopflat">XXXXXXXXX</button><br>
@@ -34,6 +39,14 @@
     <button onclick="" class="shopflat">WIP - Coming soon</button><br>
     <button onclick="" class="shopflat">WIP - Coming soon</button><br>
     <button onclick="" class="shopflat">WIP - Coming soon</button><br>
+  </div>
+
+  <!-- 6LfyJowiAAAAAC_ZpOrJUQYkyt-b8sGPr88uqrTN -->
+
+  <div class="blastingBeans invis">
+    <h1 id="bbHead" class="bbHead">there is no point to this its literally just captchas</h1>
+    <div id="captcha" class="g-recaptcha" data-sitekey="6Ldg7YsiAAAAAKel6NgQk96oKapax5NZNP-gnMtI"></div>
+    <button onclick="location.reload()" class="shopflat">again again!!!</button><br>
   </div>
 
   <div class="clickers vis">

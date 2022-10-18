@@ -21,7 +21,7 @@ var showAch = 0;
 var hasReset = 0;
 var goldmines = 0;
 
-var locked = ["Thousandaire", "Millionaire", "Billionaire", "Trillionaire", "GPU Collector", "Autoclicker", "Gold Mine", "New Man"]
+var locked = ["Thousandaire", "Millionaire", "Billionaire", "Trillionaire", "GPU Collector", "Autoclicker", "Gold Mine", "New Man", "Gambling Addict"]
 
 var unlocked = []
 
@@ -41,6 +41,13 @@ function randInt(min, max) {
 function nWC(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
+
+function rcapt() {
+  document.getElementById('captcha').remove()
+  document.getElementsByClassName('blastingBeans')[0].innerHTML = `<div id="captcha" class="g-recaptcha" data-sitekey="6Ldg7YsiAAAAAKel6NgQk96oKapax5NZNP-gnMtI"></div>`
+}
+
 
 var intervalId = window.setInterval(function () {
   if (loaded === 0) {
@@ -146,6 +153,8 @@ function showHome() {
   document.getElementsByClassName('shopBtns')[0].classList.add('invis')
   document.getElementsByClassName('shopBtns')[0].classList.remove('vis')
   document.getElementsByClassName('shopBtns')[0].classList.remove('vflex')
+  document.getElementsByClassName('blastingBeans')[0].classList.remove('vis')
+  document.getElementsByClassName('blastingBeans')[0].classList.add('invis')
 }
 
 function showShop() {
@@ -156,6 +165,20 @@ function showShop() {
   document.getElementsByClassName('shopBtns')[0].classList.remove('invis')
   document.getElementsByClassName('shopBtns')[0].classList.add('vis')
   document.getElementsByClassName('shopBtns')[0].classList.add('vflex')
+  document.getElementsByClassName('blastingBeans')[0].classList.remove('vis')
+  document.getElementsByClassName('blastingBeans')[0].classList.add('invis')
+}
+
+function showGamble() {
+  document.getElementsByClassName('header')[0].classList.remove('vis')
+  document.getElementsByClassName('header')[0].classList.add('invis')
+  document.getElementsByClassName('clickers')[0].classList.remove('vis')
+  document.getElementsByClassName('clickers')[0].classList.add('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('vis')
+  document.getElementsByClassName('shopBtns')[0].classList.add('invis')
+  document.getElementsByClassName('shopBtns')[0].classList.remove('vflex')
+  document.getElementsByClassName('blastingBeans')[0].classList.remove('invis')
+  document.getElementsByClassName('blastingBeans')[0].classList.add('vis')
 }
 
 function showSettings() {
@@ -233,7 +256,7 @@ function updateM() {
     document.getElementById('billAch').innerText = "🔓 Billionaire - Reach $1,000,000,000."
 
   }
-  
+
   if (balance >= 1000000000000) {
     if (locked.includes('Trillionaire')) {
       let tar = locked.indexOf('Trillionaire')
