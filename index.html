@@ -1,111 +1,16 @@
-<!DOCTYPE html>
-<html>
+<style>
+  @keyframes spin3D {
+    from { transform: rotateY(0deg) }
+    to { transform: rotateY(360deg) }
+  }
+  .spinhov3D:hover {
+    animation-name: spin3D;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    /* linear | ease | ease-in | ease-out | ease-in-out */
+    animation-timing-function: ease-in-out;
+  }
+</style>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>sdoma Idle</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-</head>
-
-<body>
-
-  <div class="topbar" style="display: table; overflow:hidden">
-    <span onclick="showHome()" style="display: table-cell; vertical-align: middle;" class="hover-underline-animation">Home</span>
-    <span onclick="showShop()" style="display: table-cell; vertical-align: middle; justify-content: center" class="hover-underline-animation">Shop</span>
-    <span onclick="showGamble()" style="display: table-cell; vertical-align: middle;" class="hover-underline-animation">Captcha</span>
-    <span onclick="showSettings()" style="display: none; vertical-align: middle;" class="hover-underline-animation">Extra</span>
-    <a id="topbarBal" style="display: table-cell; vertical-align: middle;">XXXX</a>
-  </div>
-
-
-
-  <div class="header vis">
-    <h1 id="mHead" class="">LOADING..</h1>
-    <h1 id="sHead" class="sHead">XXXXX XX</h1>
-    <h1 id="sHeadI" class="sHead">XXXXX XX</h1>
-    <h1 id="sHeadII" class="sHead">XXXXX XX</h1>
-  </div>
-
-  
-
-  <div class="shopBtns invis">
-    <h1 id="shopHead" class="shopHead">Shop</h1>
-    <button onclick="buyGPU()" class="shopflat">XXXXXXXXX</button><br>
-    <button onclick="buyClick()" class="shopflat">XXXXXXXXX</button><br>
-    <button onclick="buyTray()" class="shopflat">XXXXXXXXX</button><br>
-    <button onclick="" class="shopflat">WIP - Coming soon</button><br>
-    <button onclick="" class="shopflat">WIP - Coming soon</button><br>
-    <button onclick="" class="shopflat">WIP - Coming soon</button><br>
-  </div>
-
-  <!-- 6LfyJowiAAAAAC_ZpOrJUQYkyt-b8sGPr88uqrTN -->
-
-  <div class="blastingBeans invis">
-    <h1 id="bbHead" class="bbHead">there is no point to this its literally just captchas</h1>
-    <div id="captcha" class="g-recaptcha" data-sitekey="6Ldg7YsiAAAAAKel6NgQk96oKapax5NZNP-gnMtI"></div>
-    <button onclick="location.reload()" class="shopflat">again again!!!</button><br>
-  </div>
-
-  <div class="clickers vis">
-    <button onclick="addBal()" class="flat">XXXX</button><br>
-  </div>
-
-  <div class="achievements invis scroller" id="achDiv">
-    <a>Achievements</a>
-    <div class="seperator"></div>
-
-    <div class="Achievement" id="New Man">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="thouAch">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="millAch">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="billAch">
-      🔒 ??????? - ??????????????
-    </div>
-    
-    <div class="Achievement" id="trillAch">
-      🔒 ??????? - ??????????????
-    </div>
-    
-    <div class="Achievement" id="GPU Collector">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="EPC Collector">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="Autoclicker">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="AFK Pro">
-      🔒 ??????? - ??????????????
-    </div>
-
-    <div class="Achievement" id="goldAch">
-      🔒 ??????? - ??????????????
-    </div>
-
-  </div>
-
-  <div class="extras">
-    <button onclick="showAchs()" id="achBtn" class="extraflat">achievements</button>
-    <button onclick="verifyReset()" id="rsetBtn" class="extraflat">reset stats</button>
-  </div>
-
-
-  <script src="script.js"></script>
-</body>
-
-</html>
+<img src="rocket.png" class="spinhov3D"/>
+<strong>Hover to spin</strong>
