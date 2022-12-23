@@ -1,44 +1,33 @@
-<style>
-body {
-  perspective: 500px;
-  background: url('https://wallpaper.dog/large/17017788.jpg');
-  background-position: center;
-}
-a {
-  color: black;
-}
-#spinner {
-  text-align: center;
-  animation-name: spin, depth;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 6s;
-  top: 45%;
-  position: absolute;
-  left: 47%;
-  font-size: 150%;
-  text-align: center;
-}
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(-360deg); }
-}
-@keyframes depth {
-  0% { text-shadow: 0 0 black; }
-  25% { text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black; }
-  50% { text-shadow: 0 0 black; }
-  75% { text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black; }
-  100% { text-shadow: 0 0 black; }
-}
+<!DOCTYPE html>
 
-</style>
-
-<script>
-  function dlclick() {
-
-  }
-</script>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+</head>
 
 <body>
-  <a style="text-decoration:none" ><p id="spinner">[download]</p></a>
+
+  <!-- Snowflakes slowly appear here. -->
+  <div id="snow-container"></div>
+
+  <!-- Lets cut them off, and place our website in front of it. -->
+  <div id="snow-seperator"></div>
+
+  <!-- Sa-weet! Now we can do our bizz. -->
+  <div class="icon-section">
+    <div class="icon-box">
+      <img src="BHX.png" alt="Icon 1" class="icon">
+      <button type="submit" onclick="window.open(`RELEASE.rar`)" class="icon-button">> RELEASE.rar <</button>
+    </div>
+    <div class="icon-box">
+      <img src="BHS.png" alt="Icon 2" class="icon">
+      <button type="submit" onclick="window.open(`SOURCE.rar`)" class="icon-button">> SOURCE.rar <</button>
+    </div>
+    <div class="icon-box">
+      <img src="DLLs.png" alt="Icon 3" class="icon">
+      <button type="submit" onclick="window.open(`DLL's.rar`)" class="icon-button">> DLL's.rar <</button>
+    </div>
+  </div>
+
+
 </body>
