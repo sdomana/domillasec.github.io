@@ -3,6 +3,36 @@ body {
     overflow: hidden;
 }
 
+.bar {
+    top: 25%;
+    position: absolute;
+    width: 100%; /* Set the width of the bar to be the full width of the container */
+    color: white;
+    text-align: center; /* Center the text inside the bar */
+  }
+  
+  .bar p {
+    position: relative; /* Set the position of the text to be relative */
+    z-index: 1; /* Set the z-index of the text to be higher than the z-index of the bar, so that the text appears on top of the bar */
+    margin: 0; /* Remove the default top and bottom margins from the text */
+    padding: 10px 0; /* Add some padding to the top and bottom of the text */
+    font-size: 20px; /* Set the font size of the text */
+    font-weight: bold; /* Make the text bold */
+  }
+
+
+.bar-line {
+  width: 50%; /* Set the width of the bar to be the full width of the container */
+  height: 2px; /* Set the height of the bar to be 1 pixel */
+  background-color: rgb(49, 49, 49); /* Set the background color of the bar to be a light grey color */
+  margin: 0 auto;
+}
+
+  .bar p {
+    font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif; /* Use the Arial font, and fall back to the system's default sans-serif font if it is not available */
+    /* Other style rules for the text */
+  }
+
 .icon-section {
     margin: 0;
     position: absolute;
