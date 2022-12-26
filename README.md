@@ -1,4 +1,4 @@
-# domilla.ml - A site to hold my disasterous projects I made when im bored.
+# domilla.ml - A site to hold my disasterous projects I make when im bored.
 ## Current: Project benny
 
 ```
